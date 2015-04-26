@@ -410,7 +410,6 @@ limitations under the License.
               <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
             </repository>
           </distributionManagement>
-
           <build>
             <plugins>
               <plugin>
@@ -435,18 +434,19 @@ limitations under the License.
                     <jvmArg>-Xmx1800m</jvmArg>
                   </jvmArgs>
                   <launchers>
-                    <launcher>
-                      <id>LoadLauncher</id>
-                      <mainClass>cc.factorie.app.nlp.load.LoadWikipediaPlainText</mainClass>
-                      <jvmArgs>
-                        <jvmArg>-Xmx40g</jvmArg>
-                      </jvmArgs>
-                      <args>
-                        <arg>1000</arg>
-                        <arg>/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/enwiki-20150304-pages-articles.xml.bz2</arg>
-                      </args>
-                    </launcher>
-                    <!-- Example Launcher -->
+                    <!-- Example Launcher
+                      <launcher>
+                        <id>LoadLauncher</id>
+                        <mainClass>cc.factorie.app.nlp.load.LoadWikipediaPlainText</mainClass>
+                        <jvmArgs>
+                          <jvmArg>-Xmx40g</jvmArg>
+                        </jvmArgs>
+                        <args>
+                          <arg>1000</arg>
+                          <arg>/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/enwiki-20150304-pages-articles.xml.bz2</arg>
+                        </args>
+                      </launcher>
+                      -->
                   </launchers>
                 </configuration>
               </plugin>
