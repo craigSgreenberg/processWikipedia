@@ -11,6 +11,7 @@ def relpath_to_title(relpath, prefix='/wikipedia/en_title/', code_length=5):
     while bad_index != -1:
         # +1 to skip the starting $
         hex_unicode_point = relpath[bad_index+1:bad_index+code_length]
+        print bad_index+1, bad_index+code_length, hex_unicode_point
         replace_char = unichr(int(hex_unicode_point, 16)).encode('utf-8')
         relpath = relpath[:bad_index] + replace_char + relpath[bad_index+code_length:]
         bad_index = relpath.find('$')
