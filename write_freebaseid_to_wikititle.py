@@ -2,6 +2,8 @@
 def relpath_to_title(relpath, prefix='/wikipedia/en_title/', code_length=5):
     print relpath
     print prefix
+    # field has quotes surrounding it because reasons
+    relpath = relpath.strip('"')
     assert relpath.startswith(prefix)
     relpath = relpath[len(prefix):]
     relpath = relpath.replace("_", " ")
