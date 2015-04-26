@@ -1,5 +1,7 @@
 
 def relpath_to_title(relpath, prefix='/wikipedia/en_title/', code_length=5):
+    print relpath
+    print prefix
     assert relpath.startswith(prefix)
     relpath = relpath[len(prefix):]
     relpath = relpath.replace("_", " ")
