@@ -1,10 +1,9 @@
 
 def relpath_to_title(relpath, prefix='/wikipedia/en_title/', code_length=5):
-    print relpath
-    print prefix
     # field has quotes surrounding it because reasons
     relpath = relpath.strip('"')
     assert relpath.startswith(prefix)
+    print relpath
     relpath = relpath[len(prefix):]
     relpath = relpath.replace("_", " ")
     # encodes unicode as $XXXX with XXXX being the hex unicode codepoint
