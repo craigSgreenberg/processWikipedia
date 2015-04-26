@@ -180,12 +180,13 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
     val wiki2freebase = loadWikiTitle2FreebaseId()
     val docs = fromCompressedFilename(args(1), args(0).toInt)
     for (doc <- docs) {
-      println(doc.name)
+      //println(doc.name)
       if (wiki2freebase.contains(doc.name)) {
         //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
         //println(doc.string.length)
         //println(doc.string)
         println(doc.name)
+        println(wiki2freebase(doc.name))
         println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
       }
     }
