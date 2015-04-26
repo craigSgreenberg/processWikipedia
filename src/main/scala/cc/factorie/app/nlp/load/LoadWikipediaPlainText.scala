@@ -162,11 +162,11 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
     val docs = fromCompressedFilename(args(1), args(0).toInt)
     for (doc <- docs) {
       //
-      println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
+      //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
       println(doc.name)
-      println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
-      println(doc.string.length)
-      println(doc.string)
+      //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
+      //println(doc.string.length)
+      //println(doc.string)
       println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
 
     }
