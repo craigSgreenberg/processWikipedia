@@ -430,6 +430,24 @@ limitations under the License.
                   <recompileMode>incremental</recompileMode>
                   <useZincServer>false</useZincServer>
                   <scalaVersion>${scala.majorVersion}${scala.minorVersion}</scalaVersion>
+                  <jvmArgs>
+                    <jvmArg>-Xms64m</jvmArg>
+                    <jvmArg>-Xmx1800m</jvmArg>
+                  </jvmArgs>
+                  <launchers>
+                    <launcher>
+                      <id>LoadLauncher</id>
+                      <mainClass>cc.factorie.app.nlp.load.LoadWikipediaPlainText</mainClass>
+                      <jvmArgs>
+                        <jvmArg>-Xmx40g</jvmArg>
+                      </jvmArgs>
+                      <args>
+                        <arg>1000</arg>
+                        <arg>/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/enwiki-20150304-pages-articles.xml.bz2</arg>
+                      </args>
+                    </launcher>
+                    <!-- Example Launcher -->
+                  </launchers>
                 </configuration>
               </plugin>
 
