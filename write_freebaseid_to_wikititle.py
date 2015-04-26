@@ -2,6 +2,7 @@
 def relpath_to_title(relpath, prefix='/wikipedia/en_title/', code_length=5):
     # field has quotes surrounding it because reasons
     relpath = relpath.strip('"')
+    print relpath
     assert relpath.startswith(prefix)
     relpath = relpath[len(prefix):]
     relpath = relpath.replace("_", " ")
@@ -24,6 +25,7 @@ def write_freebaseid_to_wikititle(infilepath, outfilepath, sep='\t'):
                     continue
                 freebaseid, _, relpath = line.split(sep)
                 title = relpath_to_title(relpath)
+                print title
                 outf.write(freebaseid+sep+title+'\n')
 
 def main():
