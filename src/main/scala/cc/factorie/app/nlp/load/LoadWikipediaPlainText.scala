@@ -165,6 +165,7 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
       println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
       println(doc.name)
       println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
+      println(doc.string.length)
       println(doc.string)
       println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
 
