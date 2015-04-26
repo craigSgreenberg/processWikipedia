@@ -163,30 +163,31 @@ class LoadWikipediaPlainText {
     Usage:  LoadWikipediaPlainText 1000 enwiki-latest-pages-articles.xml.bz2
      will print to stdout the first 1000 non-empty Wikipedia articles. */
 object LoadWikipediaPlainText extends LoadWikipediaPlainText {
-  def loadWikiTitle2FreebaseId(filePath:String="/iesl/canvas/proj/processedClueweb12/freebase/msr/freebaseid_2_wikititle-train_only.tsv"):Map[String,String] = {
-    val wiki2freebase = Map[String, String]()
+  def loadWikiTitle2FreebaseId(filePath: String = "/iesl/canvas/proj/processedClueweb12/freebase/msr/freebaseid_2_wikititle-train_only.tsv"): Map[String, String] = {
+    var wiki2freebase = Map[String, String]()
     val fileLineItr = io.Source.fromInputStream(new FileInputStream(filePath)).getLines
+    // I expect there's a better way to do this.
     while (fileLineItr.hasNext) {
       val line = fileLineItr.next.stripLineEnd
-      wiki2freebase ++ line.split("\t")
+      val tpl = line.split("\t")
+      wiki2freebase += tpl(2) -> tpl(1)
     }
     wiki2freebase
   }
 
+
   def main(args:Array[String]): Unit = {
     val wiki2freebase = loadWikiTitle2FreebaseId()
     val docs = fromCompressedFilename(args(1), args(0).toInt)
-    /*for (doc <- docs) {
-      //
-      //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
+    for (doc <- docs) {
       println(doc.name)
-      //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
-      //println(doc.string.length)
-      //println(doc.string)
-      println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
-
+      if (wiki2freebase.contains(doc.name)) {
+        //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
+        //println(doc.string.length)
+        //println(doc.string)
+        println(doc.name)
+        println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
+      }
     }
-    */
-
   }
 }
