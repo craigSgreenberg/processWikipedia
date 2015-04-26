@@ -2,7 +2,7 @@
 def relpath_to_title(relpath, prefix='/wikipedia/en_title/', code_length=5):
     # field has quotes surrounding it because reasons
     relpath = relpath.strip('"')
-    print relpath
+    #print relpath
     assert relpath.startswith(prefix)
     relpath = relpath[len(prefix):]
     relpath = relpath.replace("_", " ")
@@ -11,10 +11,11 @@ def relpath_to_title(relpath, prefix='/wikipedia/en_title/', code_length=5):
     while bad_index != -1:
         # +1 to skip the starting $
         hex_unicode_point = relpath[bad_index+1:bad_index+code_length]
-        print bad_index+1, bad_index+code_length, hex_unicode_point
+        #print bad_index+1, bad_index+code_length, hex_unicode_point
         replace_char = unichr(int(hex_unicode_point, 16)).encode('utf-8')
         relpath = relpath[:bad_index] + replace_char + relpath[bad_index+code_length:]
-        bad_index = relpath.find('$')
+        #starting at badindex+1 prevents finding $ if $ is the replacement char, as in Cra$h_&_Burn
+        bad_index = relpath.find('$', bad_index+1)
     return relpath
 
 def write_freebaseid_to_wikititle(infilepath, outfilepath, sep='\t'):
@@ -26,7 +27,7 @@ def write_freebaseid_to_wikititle(infilepath, outfilepath, sep='\t'):
                     continue
                 freebaseid, _, relpath = line.split(sep)
                 title = relpath_to_title(relpath)
-                print title
+                #print title
                 outf.write(freebaseid+sep+title+'\n')
 
 def main():
