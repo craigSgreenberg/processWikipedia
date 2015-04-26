@@ -194,7 +194,7 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
         bw.write("<freebaseid>"+wiki2freebase(doc.name)+"</freebaseid>\n")
         val tokenList = doc.tokens.map(_.string).toList
         for (token <- tokenList.distinct){
-          bw.write(token + "\t" + tokenList.count(_==token) + "\n")
+          bw.write(token.toLowerCase + "\t" + tokenList.count(_==token) + "\n")
         }
         //bw.write(doc.string)
         //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
