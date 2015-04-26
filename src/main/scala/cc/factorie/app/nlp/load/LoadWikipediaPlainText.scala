@@ -16,6 +16,8 @@ import cc.factorie.app.nlp._
 import java.io.File
 import java.io.{File, PrintWriter, FileInputStream}
 
+import cc.factorie.app.nlp.segment.DeterministicTokenizer
+
 import scala.collection.mutable.HashMap
 
 //import scala.collection.mutable
@@ -187,9 +189,14 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
         //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
         //println(doc.string.length)
         //println(doc.string)
+        DeterministicTokenizer.process(doc)
         bw.write("<title>" + doc.name + "</title>\n")
         bw.write("<freebaseid>"+wiki2freebase(doc.name)+"</freebaseid>\n")
-        bw.write(doc.string)
+        val tokenList = doc.tokens.map(_.string).toList
+        for (token <- tokenList.distinct){
+          bw.write(token + "\t" + tokenList.count(_==token) + "\n")
+        }
+        //bw.write(doc.string)
         //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
       }
     }
