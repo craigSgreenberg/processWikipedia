@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /iesl/canvas/csgreenberg/c0d3/universalSchema_fork/univSchema
+cd /iesl/canvas/csgreenberg/c0d3/processWikipedia
 if [ ! -e CP.hack ]; then
     echo "Run make_cp.sh script first"
     exit    
