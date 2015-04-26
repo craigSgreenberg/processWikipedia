@@ -14,6 +14,11 @@
 package cc.factorie.app.nlp.load
 import cc.factorie.app.nlp._
 import java.io.File
+import java.io.{File, PrintWriter, FileInputStream}
+
+import scala.collection.mutable.HashMap
+
+//import scala.collection.mutable
 import scala.util.matching.Regex
 import scala.io.Source
 import org.apache.commons.compress.compressors.CompressorStreamFactory
@@ -158,9 +163,20 @@ class LoadWikipediaPlainText {
     Usage:  LoadWikipediaPlainText 1000 enwiki-latest-pages-articles.xml.bz2
      will print to stdout the first 1000 non-empty Wikipedia articles. */
 object LoadWikipediaPlainText extends LoadWikipediaPlainText {
+  def loadWikiTitle2FreebaseId(filePath:String="/iesl/canvas/proj/processedClueweb12/freebase/msr/freebaseid_2_wikititle-train_only.tsv"):Map[String,String] = {
+    val wiki2freebase = Map[String, String]()
+    val fileLineItr = io.Source.fromInputStream(new FileInputStream(filePath)).getLines
+    while (fileLineItr.hasNext) {
+      val line = fileLineItr.next.stripLineEnd
+      wiki2freebase ++ line.split("\t")
+    }
+    wiki2freebase
+  }
+
   def main(args:Array[String]): Unit = {
+    val wiki2freebase = loadWikiTitle2FreebaseId()
     val docs = fromCompressedFilename(args(1), args(0).toInt)
-    for (doc <- docs) {
+    /*for (doc <- docs) {
       //
       //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
       println(doc.name)
@@ -170,5 +186,7 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
       println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
 
     }
+    */
+
   }
 }
