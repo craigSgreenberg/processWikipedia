@@ -170,8 +170,7 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
     while (fileLineItr.hasNext) {
       val line = fileLineItr.next.stripLineEnd
       val tpl = line.split("\t")
-      println(tpl)
-      //wiki2freebase += tpl(2) -> tpl(1)
+      wiki2freebase += tpl(1) -> tpl(0)
     }
     wiki2freebase
   }
