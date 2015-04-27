@@ -14,7 +14,7 @@ def write_idfs(infilepath, outfilepath, num_docs_in_corpus=2213898, sep='\t'):
                 num_docs_containing_token = int(num_docs_containing_token)
                 ## default log is e, we're choosing log base 2
                 idf = log(num_docs_in_corpus/num_docs_containing_token, 2)
-                outfile.write(token+sep+idf+'\n')
+                outfile.write(token+sep+str(idf)+'\n')
 
 
 def main():
