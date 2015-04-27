@@ -188,11 +188,20 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
       //println(doc.string)
       //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
       if (wiki2freebase.contains(doc.name)) {
-        if (numDocsProcessed % 1000 == 0){
-          bw.close()
+        val bw:BufferedWriter = {
+          if (numDocsProcessed % 1000 == 0) {
+            bw.close()
+            new BufferedWriter(new FileWriter(new File(s"/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/txt/enwiki-20150304-pages-articles_freebase-train.$numDocsProcessed.txt")))
+          }
+          else{
+            bw
+          }
+        }
+        /*{
           val file = new File(s"/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/txt/enwiki-20150304-pages-articles_freebase-train.$numDocsProcessed.txt")
           val bw = new BufferedWriter(new FileWriter(file))
         }
+        */
         // tokenize and write to file
         //DeterministicTokenizer.process(doc)
         //val freebaseid = wiki2freebase(doc.name)
