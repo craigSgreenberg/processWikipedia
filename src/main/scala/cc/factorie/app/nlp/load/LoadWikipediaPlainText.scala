@@ -180,8 +180,8 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
   def main(args:Array[String]): Unit = {
     val wiki2freebase = loadWikiTitle2FreebaseId()
     val docs = fromCompressedFilename(args(1), args(0).toInt)
-    val file = new File("/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/txt/enwiki-20150304-pages-articles_freebase-train.0.txt")
-    val bw = new BufferedWriter(new FileWriter(file))
+    //val file = new File("/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/txt/enwiki-20150304-pages-articles_freebase-train.0.txt")
+    //val bw = new BufferedWriter(new FileWriter(file))
     var numDocsProcessed = 0
     for (doc <- docs) {
       //println(doc.name)
@@ -215,6 +215,6 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
         bw.write(doc.string)
       }
     }
-    bw.close()
+    //bw.close()
   }
 }

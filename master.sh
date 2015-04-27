@@ -1,5 +1,7 @@
 #!/bin/sh
-dimList="10 50 100"
+# don't vary  for classifier
+#dimList="10 50 100"
+dimList="10"
 lrList="1.0 0.1 0.01 0.001"
 regList="1.0 0.1 0.01 0.001"
 negativeList="1 5 10 20"

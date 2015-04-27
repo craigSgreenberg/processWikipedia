@@ -3,7 +3,7 @@ from __future__ import division
 from math import  log
 
 def write_idfs(infilepath, outfilepath, num_docs_in_corpus=2213898, sep='\t'):
-    with open(outfilepath) as outfile:
+    with open(outfilepath, 'w') as outfile:
         with open(infilepath) as infile:
             for line in infile:
                 line = line.strip()
