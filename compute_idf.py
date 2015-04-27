@@ -10,6 +10,7 @@ def write_idfs(infilepath, outfilepath, num_docs_in_corpus=2213898, sep='\t'):
                 if not line:
                     continue
                 ## assume all tokens contain no spaces
+                print line
                 num_docs_containing_token, token = line.split()
                 num_docs_containing_token = int(num_docs_containing_token)
                 ## default log is e, we're choosing log base 2
