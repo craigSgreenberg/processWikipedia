@@ -195,7 +195,7 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
         //  bw.write(freebaseid + "\t" + token + "\t" + tokenList.count(_==token) + "\n")
         //}
         // write to file without tokenizing
-        bw.write("<title>"+doc.name+"</title>")
+        bw.write("<title>"+doc.name+"</title>\n")
         bw.write(doc.string)
       }
     }
