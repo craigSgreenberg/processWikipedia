@@ -5,13 +5,18 @@ from math import  log
 def write_idfs(infilepath, outfilepath, num_docs_in_corpus=2213898, sep='\t'):
     with open(outfilepath, 'w') as outfile:
         with open(infilepath) as infile:
+            i = 0
             for line in infile:
                 line = line.strip()
                 if not line:
                     continue
                 ## assume all tokens contain no spaces
                 print line
-                num_docs_containing_token, token = line.split()
+                i+=1
+                num_docs_containing_token = line.split()[0]
+                token = line[len(num_docs_containing_token)+1:]
+                if  i >100:
+                    break
                 num_docs_containing_token = int(num_docs_containing_token)
                 ## default log is e, we're choosing log base 2
                 idf = log(num_docs_in_corpus/num_docs_containing_token, 2)
