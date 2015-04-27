@@ -190,7 +190,8 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
       if (wiki2freebase.contains(doc.name)) {
         val bw:BufferedWriter = {
           if (numDocsProcessed % 1000 == 0) {
-            bw.close()
+            // closing here doesn't work
+            //bw.close()
             new BufferedWriter(new FileWriter(new File(s"/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/txt/enwiki-20150304-pages-articles_freebase-train.$numDocsProcessed.txt")))
           }
           else{
