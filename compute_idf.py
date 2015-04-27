@@ -18,8 +18,8 @@ def write_idfs(infilepath, outfilepath, num_docs_in_corpus=2213898, sep='\t'):
 
 
 def main():
-    infilepath = '/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_dfs.txt'
-    outfilepath = '/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_idfs.txt'
+    infilepath = '/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-dfs.txt'
+    outfilepath = '/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-idfs.txt'
     write_idfs(infilepath, outfilepath)
 if __name__ == '__main__':
     main()
