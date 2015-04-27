@@ -180,19 +180,23 @@ object LoadWikipediaPlainText extends LoadWikipediaPlainText {
   def main(args:Array[String]): Unit = {
     val wiki2freebase = loadWikiTitle2FreebaseId()
     val docs = fromCompressedFilename(args(1), args(0).toInt)
-    val file = new File("/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-counts.txt")
+    val file = new File("/iesl/canvas/proj/processedClueweb12/wikipedia/enwiki/txt/enwiki-20150304-pages-articles_freebase-train.txt")
     val bw = new BufferedWriter(new FileWriter(file))
     for (doc <- docs) {
       //println(doc.name)
-      //bw.write(doc.string)
+      //println(doc.string)
       //println("\n+++++++++++++++++++++++++++++++++++++++++\n\n")
       if (wiki2freebase.contains(doc.name)) {
-        DeterministicTokenizer.process(doc)
-        val freebaseid = wiki2freebase(doc.name)
-        val tokenList = doc.tokens.map(_.string.toLowerCase).toList
-        for (token <- tokenList.distinct){
-          bw.write(freebaseid + "\t" + token + "\t" + tokenList.count(_==token) + "\n")
-        }
+        // tokenize and write to file
+        //DeterministicTokenizer.process(doc)
+        //val freebaseid = wiki2freebase(doc.name)
+        //val tokenList = doc.tokens.map(_.string.toLowerCase).toList
+        //for (token <- tokenList.distinct){
+        //  bw.write(freebaseid + "\t" + token + "\t" + tokenList.count(_==token) + "\n")
+        //}
+        // write to file without tokenizing
+        bw.write("<title>"+doc.name+"</title>")
+        bw.write(doc.string)
       }
     }
     bw.close()
