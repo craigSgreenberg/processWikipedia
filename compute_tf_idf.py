@@ -7,6 +7,7 @@ def get_idfmap(idf_filepath, sep='\t'):
             if not line:
                 continue
             token, idf = line.split(sep)
+            token = token.strip()
             d[token] = float(idf)
     return d
 
@@ -18,6 +19,7 @@ def write_tf_idf(tf_filepath, idfmap, outfilepath, sep='\t'):
                 if not line:
                     continue
                 freebaseid, token, tf = line.split(sep)
+                token = token.strip()
                 tf = int(tf)
                 idf = idfmap[token]
                 tfidf = tf * idf
