@@ -26,7 +26,7 @@ def write_tf_idf(tf_filepath, idfmap, outfilepath, sep='\t'):
 def main():
     tf_filepath = 'head /iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-counts.txt'
     idf_filepath = '/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-idfs.txt'
-    out_filepath = 'head /iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-tf-idfs.txt'
+    out_filepath = '/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-tf-idfs.txt'
     idfmap = get_idfmap(idf_filepath)
     write_tf_idf(tf_filepath, idfmap, out_filepath)
 
