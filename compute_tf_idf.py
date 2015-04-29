@@ -26,7 +26,9 @@ def write_tf_idf(tf_filepath, idfmap, outfilepath, sep='\t', encoding='utf8'):
                 tf = int(tf)
                 idf = idfmap[token]
                 tfidf = tf * idf
-                outfile.write(freebaseid + sep + token + sep + str(tfidf) + '\n')
+                outline = freebaseid + sep + token + sep + str(tfidf) + '\n'
+                outline.decode('iso-8859-1').encode('utf-8')
+                outfile.write(outline)
 
 def main():
     tf_filepath = '/iesl/canvas/proj/processedClueweb12/enwiki-20150304-pages-articles_freebase-train-only_token-counts.txt'
