@@ -1,4 +1,6 @@
 
+import codecs
+
 def get_idfmap(idf_filepath, sep='\t'):
     d = {}
     with open(idf_filepath) as f:
@@ -11,8 +13,9 @@ def get_idfmap(idf_filepath, sep='\t'):
             d[token] = float(idf)
     return d
 
-def write_tf_idf(tf_filepath, idfmap, outfilepath, sep='\t'):
-    with open(outfilepath, 'w') as outfile:
+def write_tf_idf(tf_filepath, idfmap, outfilepath, sep='\t', encoding='utf8'):
+    print 'encoding in', encoding
+    with codecs.open(outfilepath, 'w', encoding=encoding) as outfile:
         with open(tf_filepath) as infile:
             for line in infile:
                 line = line.strip()
