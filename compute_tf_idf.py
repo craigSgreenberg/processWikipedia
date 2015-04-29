@@ -27,7 +27,7 @@ def write_tf_idf(tf_filepath, idfmap, outfilepath, sep='\t', encoding='utf8'):
                 idf = idfmap[token]
                 tfidf = tf * idf
                 outline = freebaseid + sep + token + sep + str(tfidf) + '\n'
-                outline.decode('iso-8859-1').encode('utf-8')
+                outline = outline.decode('iso-8859-1').encode('utf-8')
                 outfile.write(outline)
 
 def main():
